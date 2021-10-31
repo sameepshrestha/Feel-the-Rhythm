@@ -1,6 +1,6 @@
 # Feel-the-Rhythm
 
-#Background
+# Background
 
 Western Power is a Western Australian State Government owned corporation responsible for building, maintaining and operating an electricity network that connects 2.3 million people to traditional and renewable energy sources, delivering an essential service to the community.
 
@@ -8,7 +8,7 @@ The teams at Western Power perform a range of tasks across their operations, and
 
 This challenge is specifically designed to look at the impact of body clocks, circadian rhythms and work schedules on the likelihood of incidents. 
 
-#The Challenge
+# The Challenge
 
 In this challenge you are asked to build and submit a model that can predict when incidents are more likely to occur, and provide an explanation of your findings and predictions in a report.
 
