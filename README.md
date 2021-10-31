@@ -1,25 +1,44 @@
-# Feel-the-Rhythm
+# Model Documentation
 
-# Background
+Please use this file to document your work.
+we have added some data after preprocessing the features from the public dataset. Full code to extract these lists has been added to the 
+explainability report
 
-Western Power is a Western Australian State Government owned corporation responsible for building, maintaining and operating an electricity network that connects 2.3 million people to traditional and renewable energy sources, delivering an essential service to the community.
+These data name and information about them are listed below
+    1  distion1 = dictionary containing the number of days each employee has worked in a month for all years 
+            distion1[employee]= [[2014],[2015],[2016],[2017],[2018],[2019]] 
+            where,
+            [2014] =[days worked in its months] for example [0,0,0,12,24,21,12,12,12,12,12,12]
 
-The teams at Western Power perform a range of tasks across their operations, and they are looking to better understand what factors contribute to an increased likelihood of safety incidents occurring. 
+    2  diff = distionary containing the regular working hour range of each employee 
+            diff[employee] =[7,14] where employee works from 7 to 14 in regular basis and anything except this is an exception
 
-This challenge is specifically designed to look at the impact of body clocks, circadian rhythms and work schedules on the likelihood of incidents. 
+    3  lists a_2014,a_2015,a_2016,a_2017,a_2018,a_2019,a_2020  = each of the lists contains the employee which started working from the   year decorated in their name
+           for example a_2014 = contains all the unique emplyoee who started working on the year 2014 assuming no work before 2014
 
-# The Challenge
+    4  WORK_DESC_TOP = contains the list of the top 50 work_desc after data processing 
 
-In this challenge you are asked to build and submit a model that can predict when incidents are more likely to occur, and provide an explanation of your findings and predictions in a report.
+    5  workk_no = list containg the top 57 preprocessed work number
+    6  summer and winter where the month is grouped into two categories
 
-You will be provided with both employee timesheet data and incident data from Western Power, between 2014 and 2019. You will also be provided with supplementary data around the incidents to aid your explanations. 
+There are many functions carrying out different tasks and these functions whith their work is listed below-
 
-#Model Requirements
+    1  work_alpha = preprocesses the wor_desc i.e removes white spaces, any special character 
+    2  season     = returns summer if is in the list summer and returns winter if is in the list winter
+    3  double_mgmt = combines the different classes of the work_desc 
+            example = all staring with tcs and containing pole jobs is listed as "TCSpole" and all other are listed as "TCS" 
+    
+    4  looper      = returns the number of days a employee works in a month according to the disctionary distion1 for each employee for every year
+    5  top_work_desc_feat = returns the work_desc if in the list work_desc_top else returns "other"
+    6  sleep_hour  = the biological sleeping time for average adult was set to be from 10 pm to 6 am which accounts to total hours of 8 
+                    the remaining time was set into category "Day time" 
+    7  job_hour    = extracts the alphabet present in the work_no and if no alphabet return "number"
+    8  year desc   = returns 2014 if the employee is present in a_2015 and similarly 2015 if present in a_2015
+    9  sunrise and sunset = extracts the sun shisne and sunset time for that day
+    10 EmpNo_Anon_categorical  =  extracts the first two digit from the EmpNo_Anon
+    11 Funcc = returns 0 if works in reguar shift for an employee as seen in diff and returns 1 if work is done out of regular working range
 
-The winning model is required to deliver the following:
 
-All scripts in Python only (we are working on introducing additional languages to this process over time).
-The model must execute in the Unearthed CrowdML Pipeline which executes within the unearthed/sagemaker-scikit-learn:0.23-1-cpu-py3 Docker container.
-The template provides guidance on where to process data, develop models and make submissions - be careful about changing this.
-Clean code, explanation of your code and process in a README document, modularity, and readability are requirements.
-A supporting Explainability Report
+# year_num 
+year_no is the year the employee started assuming 2014 as the earliest year 
+year_num = year_no - year , where year is the year of current job, which gives the age or experience of the workes as 1,2,3 years
